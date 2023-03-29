@@ -1,0 +1,17 @@
+[package]
+name = "astrix"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+csv = "1.2.1"
+serde = { version = "1.0.159", features = ["derive"] }
+
+
+[profile.release]
+strip = true  #Automatically strip symbols from the binary
+opt-level = "s" # Optimize for size
+lto = true # Enable Link Time Optimization
+codegen-units = 1 # Maximize size reduction optimizations
