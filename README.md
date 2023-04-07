@@ -15,13 +15,13 @@ FROM gaiadr1.ppmxl_original_valid
 WHERE b1mag < 12
 ```
 
-## Build
+### Build
 
 ``` bash
 cargo build --release
 ```
 
-## Run
+### Run
 
 ``` bash
 cargo run <gaia_file.csv>
