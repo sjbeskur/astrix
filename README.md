@@ -18,13 +18,15 @@ WHERE b1mag < 12
 ### Build, Run, Test
 
 ``` bash
+# build (release mode) 
 cargo build --release
 
+# run 
 cargo run <gaia_file.csv>
 or
 ./target/release/astrix <gaia_file.csv>
 
-## show output because my tests are amature hour
+# run tests and show output because my tests are amature hour
 cargo test -- --nocapture
 ```
 
