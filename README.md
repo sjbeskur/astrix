@@ -1,4 +1,4 @@
-# Astrix - Another STar Recognition Example
+# Astrix - Another STar RecognItion eXperiment
 
 ## Instructions:
 Download the GAIA Star Catalog here:
