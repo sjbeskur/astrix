@@ -3,7 +3,6 @@ use std::fs::File;
 
 use super::star::*;
 
-
 pub struct GaiaFileReader {
     reader: csv::Reader<File>,
 }
@@ -23,20 +22,14 @@ impl GaiaFileReader {
         let headers = self.reader.headers().unwrap().clone();
         println!("{:?}", headers);
 
-        let mut iter = self.reader.into_deserialize();
+        let iter = self.reader.into_deserialize();
 
         println!("reading records..");
         let mut i = 0;
-        let mut prev: Option<Star> = None;
-        while let Some(result) = iter.next() {
+        for result in iter {
             let record: Star = result?;
             i += 1;
-
-            if prev.is_some() {
-                prev.unwrap().angular_separation(&record);
-            }
-            //println!("{:?}",record);
-            prev = Some(record);
+            sender.send(record)?;
         }
 
         println!("total recs: {}", i);

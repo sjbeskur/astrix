@@ -8,10 +8,24 @@ fn main() {
     let args = cli::Config::parse();
     let file_name = args.filename;
 
-    //let file_name = "data/1680058493237O-result.csv";
+    let (tx, rx) = channel();
 
-    let (rx, tx) = channel();
+    let reader = GaiaFileReader::new(file_name);
+    let _ = reader.read_csv(tx);
 
-    let reader = GaiaFileReader::new(file_name.into());
-    reader.read_csv(rx);
+    let handle = std::thread::spawn(move || {
+        let mut prev: Option<Star> = None;
+        while let Ok(result) = rx.recv(){
+            let curr = result;
+            if let Some(prev) = prev {
+                let angle = prev.angular_separation(&curr);
+                //println!("{}", angle);
+            }
+            prev = Some(curr);
+        }
+    });
+
+    handle.join().unwrap();
+
 }
+
