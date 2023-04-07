@@ -15,21 +15,20 @@ FROM gaiadr1.ppmxl_original_valid
 WHERE b1mag < 12
 ```
 
-### Build
+### Build, Run, Test
 
 ``` bash
 cargo build --release
-```
 
-### Run
-
-``` bash
 cargo run <gaia_file.csv>
 or
 ./target/release/astrix <gaia_file.csv>
+
+## show output because my tests are amature hour
+cargo test -- --nocapture
 ```
 
-## Valgrind
+### Valgrind
 
 ``` bash
 valgrind target/release/astrix  data/1680058493237O-result.csv 
