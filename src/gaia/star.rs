@@ -1,3 +1,5 @@
+use super::{Point3};
+
 #[derive(Debug, serde::Deserialize, PartialEq)]
 pub struct Star {
 	#[serde(rename = "ra")]
@@ -40,4 +42,32 @@ impl Star {
 		// Convert the angular separation from radians to degrees
 		theta.to_degrees()
 	}
+
+
+	/// RA and Dec represents the spherical coordinates of a celestial object. 
+	/// in order to convert them to Cartesian coordinates (x, y, z) using the following formulas:
+	///
+	/// x = cos(Dec) * cos(RA) 
+	/// y = cos(Dec) * sin(RA) 
+	/// z = sin(Dec)
+	/// 
+	pub fn to_cartesian(&self) -> Point3 {
+		let x = self.dec_deg.to_radians().cos() * self.ra_deg.to_radians().cos();
+		let y = self.dec_deg.to_radians().cos() * self.ra_deg.to_radians().sin();
+		let z = self.dec_deg.to_radians().sin();
+		Point3::new(x,y,z)
+	}
+
+	/// If we have the Cartesian coordinates (x, y, z), we can convert them to spherical coordinates (r, θ, φ) 
+	/// using the following formulas:
+	///
+	/// r = sqrt(x^2 + y^2 + z^2)
+	/// θ = arccos(z/r)
+    /// φ = atan2(y, x)
+	pub fn to_spherical(&self) {
+		todo!("convert to spherical coordinates using the formula described above")
+	}
+
+
+
 }

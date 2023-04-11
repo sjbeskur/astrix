@@ -28,3 +28,15 @@ fn test_angular_separation_of_big_dipper_stars() {
 	println!("Merak - Alkaid : {} ", merak.angular_separation(&alkaid));
 	println!("Dubhe - Alkaid : {} ", dubhe.angular_separation(&alkaid));
 }
+
+
+#[test]
+fn test_convert_to_cartesian(){
+
+	println!("cartesian coords : {:?} ",Star::new(101.287024,-16.716001,-1.5).to_cartesian());
+	println!("cartesian coords : {:?} ",Star::new(95.987955,-52.695661,-0.62).to_cartesian());
+	println!("cartesian coords : {:?} ",Star::new(219.899787,-60.835273,0.0	).to_cartesian());
+	println!("cartesian coords : {:?} ",Star::new(206.8846, 49.3131, 1.5).to_cartesian());
+
+
+}
