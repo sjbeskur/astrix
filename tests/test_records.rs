@@ -39,4 +39,10 @@ fn test_convert_to_cartesian(){
 	println!("cartesian coords : {:?} ",Star::new(206.8846, 49.3131, 1.5).to_cartesian());
 
 
+	let p1 = Star::new(101.287024,-16.716001,-1.5).to_cartesian();
+	let p2 = Star::new(95.987955,-52.695661,-0.62	).to_cartesian();
+	println!("mul: {:?} ",p1*p2);
+
+	//assert_eq!(Point3::new(0.01185128, 0.5661064 , 0.22878725), p1*p2);
+
 }
