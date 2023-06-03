@@ -1,7 +1,7 @@
 use astrix::gaia::*;
 use clap::Parser;
 use std::sync::mpsc::channel;
-
+use std::thread;
 mod cli;
 fn main() {
 	let args = cli::Config::parse();
@@ -9,7 +9,7 @@ fn main() {
 
 	let (tx, rx) = channel();
 
-	let handle = std::thread::spawn(move || {
+	let handle = thread::spawn(move || {
 		let mut prev: Option<Star> = None;
 		while let Ok(result) = rx.recv() {
 			let curr = result;
