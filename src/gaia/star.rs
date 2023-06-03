@@ -1,6 +1,7 @@
 use super::{Point3};
+use serde::Deserialize;
 
-#[derive(Debug, serde::Deserialize, PartialEq)]
+#[derive(Debug, Deserialize, PartialEq)]
 pub struct Star {
 	#[serde(rename = "ra")]
 	ra_deg: f64,

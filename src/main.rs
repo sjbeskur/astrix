@@ -15,7 +15,8 @@ fn main() {
 			let curr = result;
 			if let Some(prev) = prev {
 				let angle = prev.angular_separation(&curr);
-				//println!("{}", angle);
+				let cart =  prev.to_cartesian();
+				//println!("angle: {}   cart: {:?}", angle, cart);
 			}
 			prev = Some(curr);
 		}

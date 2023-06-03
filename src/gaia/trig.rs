@@ -1,4 +1,4 @@
-use std::{ops::Mul, process::Output};
+use std::{ops::Mul};
 
 #[derive(Debug, PartialEq, PartialOrd)]
 pub struct Point3{
