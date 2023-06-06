@@ -29,7 +29,6 @@ fn test_angular_separation_of_big_dipper_stars() {
 	println!("Dubhe - Alkaid : {} ", dubhe.angular_separation(&alkaid));
 }
 
-
 #[test]
 fn test_convert_to_cartesian(){
 
@@ -44,5 +43,4 @@ fn test_convert_to_cartesian(){
 	println!("mul: {:?} ",p1*p2);
 
 	//assert_eq!(Point3::new(0.01185128, 0.5661064 , 0.22878725), p1*p2);
-
 }
