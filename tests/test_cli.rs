@@ -5,7 +5,6 @@ use std::fs;
 
 type TestResult = Result<(), Box<dyn Error>>;
 
-
 const PRG: &str = env!("CARGO_PKG_NAME");
 const TEST_DATA: &str = "data/test.csv";
 
