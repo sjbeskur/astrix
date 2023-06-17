@@ -3,6 +3,7 @@ use clap::Parser;
 use std::sync::mpsc::channel;
 use std::thread;
 mod cli;
+
 fn main() {
 	let args = cli::Config::parse();
 	let file_name = args.filename;

@@ -11,6 +11,11 @@ csv = "1.2.1"
 serde = { version = "1.0.159", features = ["derive"] }
 nalgebra = "0.32"
 
+
+[dev-dependencies]
+predicates = "3.0"
+assert_cmd = "2.0.11"
+
 [profile.release]
 strip = true  #Automatically strip symbols from the binary
 opt-level = "s" # Optimize for size

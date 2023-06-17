@@ -1,6 +1,6 @@
 use std::{ops::Mul};
 
-#[derive(Debug, PartialEq, PartialOrd)]
+#[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
 pub struct Point3{
     x: f64,
     y: f64,
@@ -17,6 +17,11 @@ impl Point3{
     pub fn y(&self) -> f64{ self.y }
 
     pub fn z(&self) -> f64{ self.z }
+
+    pub fn dot(&self, other: Point3) -> f64{
+        self.x * other.x + self.y * other.y + self.z * other.z
+    }
+
 }
 
 impl Mul for Point3{
