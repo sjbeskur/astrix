@@ -9,4 +9,7 @@ use clap::Parser;
 )]
 pub struct Config {
 	pub filename: String,
+
+	#[clap(flatten)]
+	pub verbose: clap_verbosity_flag::Verbosity,
 }

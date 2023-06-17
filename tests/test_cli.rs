@@ -6,8 +6,8 @@ use std::fs;
 type TestResult = Result<(), Box<dyn Error>>;
 
 
-const PRG: &str = "astrix";
-const TEST_DATA: &str = "data/tests.csv";
+const PRG: &str = env!("CARGO_PKG_NAME");
+const TEST_DATA: &str = "data/test.csv";
 
 // --------------------------------------------------
 #[test]
@@ -24,8 +24,8 @@ fn usage() -> TestResult {
 
 // --------------------------------------------------
 fn run(args: &[&str], expected_file: &str) -> TestResult {
-    let expected = fs::read_to_string(expected_file)?;
-    Command::cargo_bin(env!("CARGO_PKG_NAME"))?
+    let expected = fs::read_to_string(expected_file)?;        
+    Command::cargo_bin(PRG)?
         .args(args)
         .assert()
         .success();

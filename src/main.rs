@@ -1,11 +1,14 @@
 use astrix::gaia::*;
 use clap::Parser;
+use tracing_log::AsTrace;
 use std::sync::mpsc::channel;
 use std::thread;
 mod cli;
 
 fn main() {
 	let args = cli::Config::parse();
+	config_logger(&args);
+	
 	let file_name = args.filename;
 
 	let (tx, rx) = channel();
@@ -27,4 +30,11 @@ fn main() {
 	let _ = reader.read_csv(tx);
 
 	handle.join().unwrap();
+}
+
+fn config_logger(config: &cli::Config){
+	let filter = config.verbose.log_level_filter().as_trace();
+	tracing_subscriber::fmt()
+		.with_max_level(filter)
+		.init();
 }
