@@ -1,9 +1,9 @@
-mod reader;
+mod gaia_reader;
 mod star;
 mod trig;
 mod star_pair;
 
-pub use reader::*;
+pub use gaia_reader::*;
 pub use star::*;
 use std::error::Error;
 pub use trig::*;

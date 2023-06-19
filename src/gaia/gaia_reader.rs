@@ -15,19 +15,20 @@ impl GaiaFileReader {
 		}
 	}
 
-	pub fn read_csv(mut self, sender: std::sync::mpsc::Sender<Star>) -> AppResult<()> {
+	pub fn read_csv(mut self) -> AppResult<Vec<Point3>> {
 		trace!("read_csv: {:?}", self.file_name);
 		// Build the CSV reader and iterate over each record.
 		//let mut rdr = csv::Reader::from_reader(File::open(&self.file_name)?);
 		let _headers = self.reader.headers().unwrap().clone();
 		let iter = self.reader.into_deserialize();
 		let mut counter = 0;
-		for (i, result) in iter.enumerate() {
-			let record: Star = result?;
-			counter = i;
-			sender.send(record)?;
+		let mut result_list = Vec::new();
+
+		for record in iter {
+			let r : Star = record?;
+			result_list.push(r.to_cartesian());
 		}
 		info!("Number of records: {}", counter + 1);
-		Ok(())
+		Ok(result_list)
 	}
 }

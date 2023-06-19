@@ -1,6 +1,7 @@
 use nalgebra::*;
 
 use astrix::*;
+use astrix::gaia::*;
 
 #[test]
 fn test_angle_calculation() {
@@ -44,19 +45,9 @@ fn test_list_calcs() {
         astrix::gaia::Star::new(261.47561,73.264174,11.99).to_cartesian()
     ];
 
-   // assert_eq!(stars.len(), 13);
-
-    let ss = stars.clone();
-    let dots: Vec<f64> = ss.into_iter().map(|s| s.dot(astrix::gaia::Star::new(101.287024,-16.716001,-1.5).to_cartesian())).collect();
-    for p in &dots {
-        println!("{:?}",p);
-    }
-
-    let s: Vec<gaia::Point3> =  stars[5..].to_vec().into_iter().map(|i| i).collect();
+    let threshold_k = std::f64::consts::PI / 4.0;
 
     let mut pairs = Vec::new();
-
-    let threshold_k = std::f64::consts::PI / 4.0;
 
     for (i, star) in stars.iter().enumerate() {
         let mut first = stars[i].clone();
@@ -84,4 +75,19 @@ fn test_list_calcs() {
 
     //println!("{:?}",&stars[0] * &stars[1]);
 
+}
+
+
+
+#[test]
+pub fn test_star_pair_new() {
+    let pair = StarPair::new(55,45,60.0_f64.to_radians());
+    assert!(pair.id1 == 55);
+    assert!(pair.id2 == 45);
+    assert!(round(pair.angle.cos(), 3) == 0.5);
+}
+
+fn round(x: f64, decimals: u32) -> f64 {
+    let y = 10i64.pow(decimals) as f64;
+    (x * y).round() / y
 }
