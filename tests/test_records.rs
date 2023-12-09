@@ -9,6 +9,13 @@ fn test_angular_separation() {
 	println!("Angular separation: {}", angle);
 }
 
+///
+///    *  	 '*
+///					*
+///						*
+///								   *
+///						*
+///								 *
 #[test]
 fn test_angular_separation_of_big_dipper_stars() {
 	let alkaid = Star::new(206.8846, 49.3131, 1.5);
@@ -25,7 +32,8 @@ fn test_angular_separation_of_big_dipper_stars() {
 	println!("Megrez - Phecda: {} ", megrez.angular_separation(&phecda));
 	println!("Phecda - Merak : {} ", phecda.angular_separation(&merak));
 
-	println!("Merak - Alkaid : {} ", merak.angular_separation(&alkaid));
+	println!("Merak - Merak : {} ", merak.angular_separation(&merak));
+	println!("Merak - Dubhe : {} ", merak.angular_separation(&dubhe));
 	println!("Dubhe - Alkaid : {} ", dubhe.angular_separation(&alkaid));
 }
 
