@@ -1,4 +1,4 @@
-use std::{ops::Mul};
+use std::ops::Mul;
 
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
 pub struct Point3{
@@ -18,6 +18,12 @@ impl Point3{
 
     pub fn z(&self) -> f64{ self.z }
 
+    /// Dot product of two vectors
+    /// 
+    ///  a . b = ||a|| ||b|| cos θ
+    ///
+    /// The above equality represents the main application of the dot product
+    /// 
     pub fn dot(&self, other: Point3) -> f64{
         self.x * other.x + self.y * other.y + self.z * other.z
     }

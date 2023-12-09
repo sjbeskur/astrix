@@ -11,11 +11,11 @@ fn test_angular_separation() {
 
 ///
 ///    *  	 '*
-///					*
+///	 Alkaid	   	   *
 ///						*
-///								   *
+///								   * - Dubhe
 ///						*
-///								 *
+///								 * - Merak
 #[test]
 fn test_angular_separation_of_big_dipper_stars() {
 	let alkaid = Star::new(206.8846, 49.3131, 1.5);
@@ -23,8 +23,8 @@ fn test_angular_separation_of_big_dipper_stars() {
 	let alioth = Star::new(192.7533, 55.959, 1.5);
 	let megrez = Star::new(181.5296, 57.017, 1.5);
 	let phecda = Star::new(179.7404, 53.694, 1.5);
-	let merak = Star::new(165.1371, 56.382, 1.5);
-	let dubhe = Star::new(165.9321, 61.7508, 1.5);
+	let merak = Star::new(166.460137, 56.382425, 1.5);
+	let dubhe = Star::new(165.932796, 61.750917, 1.5);
 
 	println!("Alkaid - Mizar : {} ", alkaid.angular_separation(&mizar));
 	println!("Mizar  - Alioth: {} ", mizar.angular_separation(&alioth));
@@ -34,7 +34,7 @@ fn test_angular_separation_of_big_dipper_stars() {
 
 	println!("Merak - Merak : {} ", merak.angular_separation(&merak));
 	println!("Merak - Dubhe : {} ", merak.angular_separation(&dubhe));
-	println!("Dubhe - Alkaid : {} ", dubhe.angular_separation(&alkaid));
+	println!("Dubhe - Merak : {} ", dubhe.angular_separation(&merak));
 }
 
 #[test]
