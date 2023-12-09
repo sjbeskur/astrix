@@ -1,11 +1,10 @@
-use clap::Parser;
 use tracing_log::AsTrace;
 
 mod cli;
 pub use cli::{Config};
 
 fn main() {
-	let cfg = Config::parse();
+	let cfg = Config::parse_args();
 	config_logger(&cfg);
 		
 	astrix::generate_catalog(cfg.filename, cfg.threshold as f64);

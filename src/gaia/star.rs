@@ -13,7 +13,6 @@ pub struct Star {
 	mag: f32,
 }
 
-
 impl Star {
 	pub fn new(ra_deg: f64, dec_deg: f64, mag: f32) -> Self {
 		Self {
@@ -25,7 +24,6 @@ impl Star {
 
 	// conversion for hours, minutes, seconds.. I think
 	// let sep_deg = ra1 * 15.0 / 180.0 * PI, dec1 / 180.0 * PI, ra2 * 15.0 / 180.0 * PI, dec2 / 180.0 * PI;
-
 	pub fn angular_separation(&self, other_star: &Star) -> f64 {
 		// Calculate the angular separation between the stars
 		let ra1 = self.ra_deg.to_radians();
