@@ -22,10 +22,10 @@ fn generate_catalog_wip(stars: Vec<Point3>, threshold: f64) {
 
     let threshold_k = std::f64::consts::PI / threshold;
 
-    let mut pairs = Vec::new();
+   // let mut pairs = Vec::new();
 
     for (i, star) in stars.iter().enumerate() {
-        let mut first = stars[i].clone();
+        let first = stars[i].clone();
         let subset: Vec<Point3> =  stars[i+1..].to_vec().into_iter().map(|i| i).collect();        
 
         println!("counter: {:?},   len: {}",i, subset.len());
@@ -33,8 +33,10 @@ fn generate_catalog_wip(stars: Vec<Point3>, threshold: f64) {
 
         for (j,p) in points.iter().enumerate() {
             if  *p < threshold_k {
-                pairs.push(gaia::StarPair::new(i as i32, j as i32, *p));
-                info!("i: {},  j: {},  arcos = {:?}",i, i+1+j, p);
+                let pair = gaia::StarPair::new(i as i32, j as i32, *p);
+             //   pairs.push(pair);
+             //   info!("i: {},  j: {},  arcos = {:?}",i, i+1+j, p);
+                info!("pair: {:?} - {}",pair, threshold_k);
             }else{
                 trace!("P > threshold");
             }            
@@ -43,7 +45,7 @@ fn generate_catalog_wip(stars: Vec<Point3>, threshold: f64) {
 
     println!("\n================================");
     println!("# of stars {}", stars.len());
-    println!("# of pairs {}", pairs.len());
+    //println!("# of pairs {}", pairs.len());
     println!("================================");
     //println!("{:?}",&stars[0] * &stars[1]);
 }
