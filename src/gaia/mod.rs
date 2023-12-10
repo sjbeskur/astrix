@@ -3,6 +3,7 @@ mod star;
 mod trig;
 mod star_pair;
 
+pub mod tile_strategy;
 pub use gaia_reader::*;
 pub use star::*;
 use std::error::Error;

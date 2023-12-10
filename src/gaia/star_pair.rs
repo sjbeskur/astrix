@@ -28,8 +28,11 @@ impl std::cmp::Eq for StarPair{}
 
 impl std::cmp::PartialEq for StarPair{
     fn eq(&self, other: &Self) -> bool {
-        self.id1 == other.id1 && self.id2 == other.id2 || 
-        self.id1 == other.id2 && self.id2 == other.id1 
+        self.angle == other.angle && 
+        (
+            self.id1 == other.id1 && self.id2 == other.id2 || 
+            self.id1 == other.id2 && self.id2 == other.id1 
+        )
     }
 }
 
