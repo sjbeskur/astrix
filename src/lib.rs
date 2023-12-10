@@ -14,12 +14,14 @@ pub fn generate_catalog(filename: String, threshold: f64){
 
     //info!("Generating Catalog: {}", &cartesian_points.len());
     //generate_catalog_wip(points, threshold);
-    tile_stars(stars);
+    bf_tile_stars(stars);
 
 }
 
 
-fn tile_stars(stars: Vec<Star>) {
+/// A Brute Force Tile Strategy that is no doubt incorrect.
+/// 
+fn bf_tile_stars(stars: Vec<Star>) { // --> Map<tile_id, Vec<StarPair>> { // idk maybe something like this?
 
     let fov = 10.0;
     let mut band_counter = 0;
