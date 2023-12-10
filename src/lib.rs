@@ -35,7 +35,7 @@ fn bf_tile_stars(stars: Vec<Star>) { // --> Map<tile_id, Vec<StarPair>> { // idk
         for r in (0..360).step_by(fov as usize){
             let ra_start = r as f64;
             let ra_end = r as f64 + fov;
-            let stars_per_tile  = stars.iter().filter(|f| f.is_in_fov(dec_start, ra_start, dec_end, ra_end));
+            let stars_per_tile  = stars.iter().filter(|f| f.is_in_fov(ra_start, dec_start,  ra_end, dec_end));
             stars_per_band += stars_per_tile.count();
            // println!("{} {} {} {} = count: {}", dec_start, ra_start, dec_end, ra_end, fov_stars.count());
         }
@@ -46,11 +46,6 @@ fn bf_tile_stars(stars: Vec<Star>) { // --> Map<tile_id, Vec<StarPair>> { // idk
     }
     println!("total stars: {} - {}", total_stars, stars.len());
 
-    // let fov_stars: Vec<gaia::Star> = stars.into_iter().filter(|f| f.is_in_fov(dec_start, ra_start, dec_end, ra_end)).collect();
-
-    // for (i, star) in fov_stars.iter().enumerate() {
-    //   //  println!("id: {i} - coords: {:?}",star);
-    // }
 }
 
 

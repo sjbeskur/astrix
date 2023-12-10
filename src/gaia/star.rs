@@ -68,7 +68,7 @@ impl Star {
 	}
 
 
-	pub fn is_in_fov(&self, start_dec: f64, start_ra: f64, end_dec: f64, end_ra: f64) -> bool {
+	pub fn is_in_fov(&self,  start_ra: f64, start_dec: f64, end_ra: f64, end_dec: f64) -> bool {
 		// a fixed 20 degrees fov		
 		return self.dec_deg > start_dec && self.ra_deg > start_ra && self.dec_deg < end_dec && self.ra_deg < end_ra
 		//return self.dec_deg > 0.0 && self.ra_deg > 0.0 && self.dec_deg < 20.0 && self.ra_deg < 20.0
