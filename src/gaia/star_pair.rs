@@ -41,12 +41,12 @@ fn hash_star_pair_test() {
     let pair1 = StarPair::new(2,312, 0.0);
     let pair2 = StarPair::new(312,2, 0.0);
 
-    let mut hasher = DefaultHasher::new();
-    pair1.hash(&mut hasher);    
-    println!("Hash is {:x}!", hasher.finish());
+    // let mut hasher = DefaultHasher::new();
+    // pair1.hash(&mut hasher);    
+    // println!("Hash is {:x}!", hasher.finish());
 
-    pair2.hash(&mut hasher);    
-    println!("Hash is {:x}!", hasher.finish());
+    // pair2.hash(&mut hasher);    
+    // println!("Hash is {:x}!", hasher.finish());
 
     let mut map = std::collections::HashSet::new();
     map.insert(pair1);
