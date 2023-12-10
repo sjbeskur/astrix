@@ -15,7 +15,7 @@ impl GaiaFileReader {
 		}
 	}
 
-	pub fn read_csv(mut self) -> AppResult<Vec<Point3>> {
+	pub fn read_csv(mut self) -> AppResult<Vec<Star>> {
 		trace!("read_csv: {:?}", self.file_name);
 		// Build the CSV reader and iterate over each record.
 		//let mut rdr = csv::Reader::from_reader(File::open(&self.file_name)?);
@@ -26,7 +26,7 @@ impl GaiaFileReader {
 
 		for record in iter {
 			let r : Star = record?;
-			result_list.push(r.to_cartesian());
+			result_list.push(r);
 		}
 		info!("Number of records: {}", counter + 1);
 		Ok(result_list)

@@ -10,23 +10,58 @@ use std::thread;
 pub fn generate_catalog(filename: String, threshold: f64){
 
 	let reader = GaiaFileReader::new(filename);
-	let points = reader.read_csv().unwrap();
+	let stars = reader.read_csv().unwrap();
 
     //info!("Generating Catalog: {}", &cartesian_points.len());
-    generate_catalog_wip(points, threshold);
+    //generate_catalog_wip(points, threshold);
+    tile_stars(stars);
 
 }
 
 
-fn generate_catalog_wip(stars: Vec<Point3>, threshold: f64) {
+fn tile_stars(stars: Vec<Star>) {
+
+    let fov = 10.0;
+    let mut band_counter = 0;
+    let mut stars_per_band = 0;
+    let mut total_stars = 0;
+    for d in (-90..90).step_by(fov as usize){
+        let dec_start = d as f64;
+        let dec_end = d as f64 + fov;
+        let mut ra = 0;
+        let mut stars_per_band = 0;
+        for r in (0..360).step_by(fov as usize){
+            let ra_start = r as f64;
+            let ra_end = r as f64 + fov;
+            let stars_per_tile  = stars.iter().filter(|f| f.is_in_fov(dec_start, ra_start, dec_end, ra_end));
+            stars_per_band += stars_per_tile.count();
+           // println!("{} {} {} {} = count: {}", dec_start, ra_start, dec_end, ra_end, fov_stars.count());
+        }
+        println!("------------------------------------------------|{band_counter} = ({ra},{d}) - stars in band: {stars_per_band}");
+        band_counter += 1;
+        total_stars += stars_per_band;
+        ra += fov as i32;
+    }
+    println!("total stars: {} - {}", total_stars, stars.len());
+
+    // let fov_stars: Vec<gaia::Star> = stars.into_iter().filter(|f| f.is_in_fov(dec_start, ra_start, dec_end, ra_end)).collect();
+
+    // for (i, star) in fov_stars.iter().enumerate() {
+    //   //  println!("id: {i} - coords: {:?}",star);
+    // }
+}
+
+
+
+fn generate_catalog_wip(stars: Vec<Star>, threshold: f64) {
 
     let threshold_k = std::f64::consts::PI / threshold;
 
    // let mut pairs = Vec::new();
 
     for (i, star) in stars.iter().enumerate() {
-        let first = stars[i].clone();
-        let subset: Vec<Point3> =  stars[i+1..].to_vec().into_iter().map(|i| i).collect();        
+        let first = stars[i].clone().to_cartesian();
+        let subset: Vec<Point3> =  stars[i+1..].to_vec().into_iter().map(|i| i.to_cartesian()).collect();        
 
         println!("counter: {:?},   len: {}",i, subset.len());
         let points: Vec<f64> = subset.into_iter().map(|s| s.dot(first).acos()).collect();
