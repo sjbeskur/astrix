@@ -29,6 +29,8 @@ impl GaiaFileReader {
 			result_list.push(r);
 		}
 		info!("Number of records: {}", counter + 1);
+				
 		Ok(result_list)
 	}
+
 }

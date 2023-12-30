@@ -44,3 +44,18 @@ valgrind target/release/astrix  data/1680058493237O-result.csv
 ==524901== For lists of detected and suppressed errors, rerun with: -s
 ==524901== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
+
+
+## Experimental Database support using Postgresql
+
+project home directory run:
+
+```
+docker-compose -f docker/docker-compose.yml up
+```
+
+then run the migrations using:
+
+```
+sqlx migrate run
+```
