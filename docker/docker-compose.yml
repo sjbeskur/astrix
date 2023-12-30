@@ -8,13 +8,17 @@ services:
     volumes:
       - postgresDB:/data/postgres
     env_file:
-      - ./.env
+      - ../.env
   pgAdmin:
     image: dpage/pgadmin4
     container_name: pgAdmin
     env_file:
-      - ./.env
+      - ../.env
     ports:
       - "5050:80"
 volumes:
-  postgresDB:
+  postgresDB:   # this creates a volume on the host in /var/lib/docker/volumes (it is protected so you might need sudo)
+
+  # docker volume ls
+  #
+  # docker volume rm 

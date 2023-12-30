@@ -52,10 +52,20 @@ project home directory run:
 
 ```
 docker-compose -f docker/docker-compose.yml up
+docker ps
+docker inspect postgres
 ```
 
 then run the migrations using:
 
 ```
 sqlx migrate run
+```
+
+
+tear down
+```
+docker-compose -f docker/docker-compose.yml down --volumes
+docker volumes ls 
+docker volumes rm <name | --all>
 ```
