@@ -52,10 +52,11 @@ impl Config {
 
 impl Command{
 
-	pub fn invoke(&self){
-		match &self {
+	pub async fn invoke(self, filename: String){
+		match self {
 			Self::InitDB { database_url } =>{
 				println!("url is {:?}", database_url);
+				astrix::gaia::db::insert_stars(database_url, filename).await;
 			}
 		}
 	}

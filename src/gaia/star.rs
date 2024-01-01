@@ -22,6 +22,18 @@ impl Star {
 		}
 	}
 
+	pub fn right_ascention_rads(&self) -> f64{
+		self.ra_deg.to_radians()
+	}
+
+	pub fn declination_rads(&self) -> f64{
+		self.dec_deg.to_radians()
+	}
+
+	pub fn apparent_magnitude(&self) -> f32{
+		self.mag
+	}
+
 	// conversion for hours, minutes, seconds.. I think
 	// let sep_deg = ra1 * 15.0 / 180.0 * PI, dec1 / 180.0 * PI, ra2 * 15.0 / 180.0 * PI, dec2 / 180.0 * PI;
 	pub fn angular_separation(&self, other_star: &Star) -> f64 {

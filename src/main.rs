@@ -2,11 +2,12 @@
 mod cli;
 use cli::Config;
 
-fn main() {
+#[tokio::main]
+async fn main() {
 	let cfg = Config::parse_args();
-	cfg.command.invoke(); // still experimenting with this?
+	cfg.command.invoke(cfg.filename).await; // still experimenting with this?
 		
-	astrix::generate_catalog(cfg.filename, cfg.threshold as f64);
+	//astrix::generate_catalog(cfg.filename, cfg.threshold as f64);
 
 }
 
