@@ -46,7 +46,7 @@ async fn bulk_insert(database_url: String, stars: Vec<Star>) {
     for (i, stars) in stars.chunks(1000).enumerate(){
         println!("size of chunk is {:?}", stars.len());
         let ras: Vec<f64> = stars.iter().map(|r| r.right_ascention_rads()).collect();
-        let decs: Vec<f64> = stars.iter().map(|r| r.right_ascention_rads()).collect();
+        let decs: Vec<f64> = stars.iter().map(|r| r.declination_rads()).collect();
         let mags: Vec<f32> = stars.iter().map(|r| r.apparent_magnitude()).collect();
         let xx: Vec<f64> = stars.iter().map(|r| r.to_cartesian().x()).collect();
         let yy: Vec<f64> = stars.iter().map(|r| r.to_cartesian().y()).collect();
