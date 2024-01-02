@@ -69,3 +69,15 @@ docker-compose -f docker/docker-compose.yml down --volumes
 docker volumes ls 
 docker volumes rm <name | --all>
 ```
+
+
+### Notes
+
+https://www.youtube.com/watch?v=TCERYbgvbq0&ab_channel=DreamsofCode
+
+
+https://docs.rs/sqlx/latest/sqlx/postgres/types/index.html
+
+**Bulk Inserting:**
+
+https://www.alxolr.com/articles/rust-bulk-insert-to-postgre-sql-using-sqlx
